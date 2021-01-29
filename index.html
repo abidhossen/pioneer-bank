@@ -90,18 +90,18 @@
         // amount taker
         function getInputNumber(id){
             const amount = document.getElementById(id).value;
-            const number = parseFloat(amount);
-            return number;
+            const amountNumber = parseFloat(amount);
+            return amountNumber;
         }
     
         function valueTaker(id) {
             document.getElementById(id).value = "";
         }
         // deposit-balance-withdraw calculator:
-        function updateSpanText(id, depositNumber) {
+        function updateSpanText(id, addedNumber) {
             const current = document.getElementById(id).innerText;
             const currentNumber = parseFloat(current);
-            const total = depositNumber + currentNumber;
+            const total = addedNumber + currentNumber;
             document.getElementById(id).innerText = total;
         }
         
