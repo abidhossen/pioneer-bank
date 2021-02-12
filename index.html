@@ -74,26 +74,35 @@
         const depositBtn = document.getElementById('addCashBtn');
         depositBtn.addEventListener('click', function () {
             const depositNumber = getInputNumber('depositAmount');
-            updateSpanText("currentDeposit", depositNumber);
-            valueTaker('depositAmount');
-            updateSpanText("currentBalance", depositNumber);
+            if (depositNumber < 0) {
+                alert('Invalid Deposit Amount!');
+            }
+            else {
+                updateSpanText("currentDeposit", depositNumber);
+                valueTaker('depositAmount');
+                updateSpanText("currentBalance", depositNumber);
+            }
         })
-
         const withdrawBtn = document.getElementById("cashOutBtn");
         withdrawBtn.addEventListener('click', function () {
             const withdrawNumber = getInputNumber('withdrawAmount');
-            updateSpanText("currentWithdraw", withdrawNumber);
-            valueTaker('withdrawAmount');
-            updateSpanText("currentBalance",-1* withdrawNumber);
+            if (withdrawNumber < 0) {
+                alert('Invalid Withdraw Amount!')
+            }
+            else {
+                updateSpanText("currentWithdraw", withdrawNumber);
+                valueTaker('withdrawAmount');
+                updateSpanText("currentBalance", -1 * withdrawNumber);
+            }
         })
 
         // amount taker
-        function getInputNumber(id){
+        function getInputNumber(id) {
             const amount = document.getElementById(id).value;
             const amountNumber = parseFloat(amount);
             return amountNumber;
         }
-    
+
         function valueTaker(id) {
             document.getElementById(id).value = "";
         }
@@ -102,9 +111,15 @@
             const current = document.getElementById(id).innerText;
             const currentNumber = parseFloat(current);
             const total = addedNumber + currentNumber;
-            document.getElementById(id).innerText = total;
+            if(total < 0){
+                alert('Unable to withdraw!')
+            }
+            else{
+                document.getElementById(id).innerText = total;
+            }
+            
         }
-        
+
 
     </script>
 </body>
